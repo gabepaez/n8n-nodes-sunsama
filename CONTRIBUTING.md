@@ -25,6 +25,13 @@ Use semantic versioning:
 - `minor` for new backward-compatible features
 - `major` for breaking changes
 
+## Releases
+
+- Update `CHANGELOG.md` for the target version
+- Ensure the matching git tag exists (for example, `v0.1.2`)
+- Use `npm run release:publish` for one-command npm + GitHub release publishing
+- Use `npm run release:github` when only the GitHub release needs to be created
+
 ## Security
 
 - Never commit credentials or session tokens

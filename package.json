@@ -18,7 +18,9 @@
     "lint": "eslint \"{credentials,nodes}/**/*.ts\"",
     "lint:fix": "eslint \"{credentials,nodes}/**/*.ts\" --fix",
     "format": "prettier --write \"{credentials,nodes,scripts}/**/*.{ts,mjs}\" README.md",
-    "prepublishOnly": "npm run build && npm run lint"
+    "prepublishOnly": "npm run build && npm run lint",
+    "release:github": "node scripts/create-github-release.mjs",
+    "release:publish": "npm publish --access public && npm run release:github"
   },
   "repository": {
     "type": "git",

@@ -112,19 +112,34 @@ This returns one output item per task.
 - `npm run lint` - Lint source files
 - `npm run lint:fix` - Auto-fix lint issues
 - `npm run format` - Format source files
+- `npm run release:github` - Create GitHub release notes from template + changelog for current version tag
+- `npm run release:publish` - Publish npm package, then create GitHub release (single command)
 
-## Publishing Checklist
+## Publishing Workflow
 
-Before publishing:
-
-1. Update `package.json` repository/homepage/bugs URLs
-2. Bump version
-3. Build and lint
-4. Test in a local n8n instance
-5. Publish:
+1. Bump version (example):
 
 ```bash
-npm publish
+npm version patch --no-git-tag-version
+```
+
+2. Update `CHANGELOG.md` section for that version.
+3. Commit and push changes, and make sure the matching tag exists (example: `v0.1.2`).
+4. Run one command:
+
+```bash
+npm run release:publish
+```
+
+This command publishes to npm and creates a GitHub release using:
+
+- `.github/release-template.md`
+- the matching section from `CHANGELOG.md`
+
+To create only the GitHub release (without npm publish):
+
+```bash
+npm run release:github
 ```
 
 ## Security Notes
